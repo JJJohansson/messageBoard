@@ -36,6 +36,17 @@
 				</tbody>
 			</table>
 			<a href="/login" class="btn btn-danger">Log out</a>
+			<table class="col-sd-12 col-md-12 col-ld-12" style="float: none; margin: 0 auto;">
+				<tr>
+					<th>#</th><th>user</th><th>message</th><th>posted</th>
+				</tr>
+				<tr th:each = "comment : ${comments}">
+					<td th:text="${comment.id}"></td>
+					<td th:text="${comment.username}"></td>
+					<td th:text="${comment.content}"></td>
+					<td th:text="${comment.created}"></td>
+				</tr>
+			</table>
 		</div>
 	</div>
 </body>
