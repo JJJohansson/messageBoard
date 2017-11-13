@@ -15,21 +15,19 @@ public class Comment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	
-	private String content;
-	
+	private long threadId;
 	@CreatedBy
-	private String username;
-	
+	private String creator;
+	private String content;
 	@CreatedDate
 	private String created;
-	// 2017-10-31 14:09:47.623
 	
 	public Comment() { }
 	
-	public Comment (String content, String username, String created) {
+	public Comment (long threadId, String creator, String content, String created) {
+		this.threadId = threadId;
+		this.creator = creator;
 		this.content = content;
-		this.username = username;
 		this.created = created;
 	}
 
@@ -41,20 +39,28 @@ public class Comment {
 		this.id = id;
 	}
 
+	public long getThreadId() {
+		return threadId;
+	}
+
+	public void setThreadId(long threadId) {
+		this.threadId = threadId;
+	}
+
+	public String getCreator() {
+		return creator;
+	}
+
+	public void setCreator(String creator) {
+		this.creator = creator;
+	}
+
 	public String getContent() {
 		return content;
 	}
 
 	public void setContent(String content) {
 		this.content = content;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
 	}
 
 	public String getCreated() {
@@ -67,7 +73,7 @@ public class Comment {
 	
 	@Override
 	public String toString() {
-		return "#" + getId() + ", username: " + getUsername() + ", date: " + getCreated() + ", message: " + getContent();
+		return "comment #" + getId() + ", thread #" + getThreadId() + ", creator: " + getCreator() + ", date: " + getCreated() + ", message: " + getContent();
 	}
 
 }
