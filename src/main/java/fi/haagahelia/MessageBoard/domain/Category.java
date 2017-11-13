@@ -8,16 +8,16 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Forum")
-public class Forum {
+public class Category {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	private String title;
 	
-	public Forum() { }
+	public Category() { }
 	
-	public Forum(String title) {
+	public Category(String title) {
 		this.title = title;
 	}
 
@@ -38,6 +38,6 @@ public class Forum {
 	}
 	
 	public String toString() {
-		return "Forum #" + getId() + ", title: " + getTitle();
+		return "Category #" + getId() + ", title: " + getTitle();
 	}
 }

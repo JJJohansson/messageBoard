@@ -4,6 +4,6 @@ import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface ForumRepository extends CrudRepository<Forum, Long>{
-	List<Forum> findById (long id);
+public interface CategoryRepository extends CrudRepository<Category, Long>{
+	List<Category> findById (long id);
 }

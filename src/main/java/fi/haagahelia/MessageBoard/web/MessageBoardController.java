@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import fi.haagahelia.MessageBoard.domain.CommentRepository;
-import fi.haagahelia.MessageBoard.domain.ForumRepository;
+import fi.haagahelia.MessageBoard.domain.CategoryRepository;
 import fi.haagahelia.MessageBoard.domain.ThreadRepository;
 
 @Controller
 public class MessageBoardController {
 	
 	@Autowired
-	private ForumRepository forumRepo;
+	private CategoryRepository categoryRepo;
 	@Autowired
 	private ThreadRepository threadRepo;
 	@Autowired
@@ -23,15 +23,15 @@ public class MessageBoardController {
 	
 	@RequestMapping(value="/home")
 	public String homePage(Model model) {
-		model.addAttribute("forums", forumRepo.findAll());
+		model.addAttribute("categories", categoryRepo.findAll());
 		return "home";
 	}
 	
-	@RequestMapping(value="/forum/{id}", method = RequestMethod.GET)
-	public String forum(@PathVariable("id") Long forumId, Model model) {
-		model.addAttribute("forumId", forumRepo.findById(forumId));
-		model.addAttribute("threads", threadRepo.findByForumId(forumId));
-		return "forum";
+	@RequestMapping(value="/category/{id}", method = RequestMethod.GET)
+	public String category(@PathVariable("id") Long categoryId, Model model) {
+		model.addAttribute("category", categoryRepo.findById(categoryId));
+		model.addAttribute("threads", threadRepo.findByCategoryId(categoryId));
+		return "category";
 	}
 	
 	@RequestMapping(value="/thread/{id}", method = RequestMethod.GET)

@@ -6,6 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface ThreadRepository extends CrudRepository<Thread, Long>{
 	List<Thread> findById (long id);
-	List<Thread> findByForumId (long forumId);
+	List<Thread> findByCategoryId (long categoryId);
 	List<Thread> findByCreator (String creator);
 }

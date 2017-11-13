@@ -2,39 +2,40 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
-<title th:text="${thread}"></title>
+<title th:text="${category}"></title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"
 	th:href="@{/css/bootstrap.min.css}" />
 </head>
 <body>
 	<div class="container">
-		<div class="col-md-12">
-			<h3 style="text-align: center; margin: 2em;" th:text="${thread}"></h3>
+		<div class="col-md-8" style="float: none; margin: 0 auto;">
+			<h3 style="text-align: center; margin: 2em;" th:text="${category}"></h3>
 		</div>
 		<div class="row">
+			<br />
 			<div class="col-md-8" style="float: none; margin: 0 auto;">
-				<table class="table table-hover table-condensed">
+				<table class="table table-hover table-striped">
 					<thead>
 						<tr>
-							<th>Comment</th>
+							<th>Title</th>
+							<th>Posts</th>
 							<th>Created by</th>
 							<th>Date</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="comment : ${comments}">
-							<td th:text="${comment.content}"></td>
-							<td th:text="${comment.creator}"></td>
-							<td th:text="${comment.created}"></td>
+						<tr th:each="thread : ${threads}">
+							<td th:text="${thread.title}"></td>
+							<td>2</td>
+							<td th:text="${thread.creator}"></td>
+							<td th:text="${thread.created}"></td>
+							<td><a th:href="@{/thread/{id}(id=${thread.id})}"
+								class="btn btn-info">Read</a></td>
 						</tr>
 					</tbody>
 				</table>
-				<label for="comment">Comment:</label>
-				<div class="form-group">
-					<textarea class="form.control" rows="10" cols="95" id="comment"></textarea>
-				</div>
-				<input type="submit" class="btn btn-success" value="Reply"></input>
+				<a href="/home" class="btn btn-info">HOME</a>
 			</div>
 			<div class="col-md-4">
 				<form th:action="@{/login}" method="post">

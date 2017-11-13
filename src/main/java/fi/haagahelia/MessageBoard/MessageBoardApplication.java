@@ -9,9 +9,9 @@ import org.springframework.context.annotation.Bean;
 
 import fi.haagahelia.MessageBoard.domain.Comment;
 import fi.haagahelia.MessageBoard.domain.Thread;
-import fi.haagahelia.MessageBoard.domain.Forum;
+import fi.haagahelia.MessageBoard.domain.Category;
 import fi.haagahelia.MessageBoard.domain.CommentRepository;
-import fi.haagahelia.MessageBoard.domain.ForumRepository;
+import fi.haagahelia.MessageBoard.domain.CategoryRepository;
 import fi.haagahelia.MessageBoard.domain.ThreadRepository;
 
 @SpringBootApplication
@@ -23,31 +23,30 @@ public class MessageBoardApplication {
 	}
 	
 	@Bean
-	public CommandLineRunner demo(ForumRepository forumRepo, ThreadRepository threadRepo,  CommentRepository commentRepo) {
+	public CommandLineRunner demo(CategoryRepository forumRepo, ThreadRepository threadRepo,  CommentRepository commentRepo) {
 		return (args) -> {	
 
-			log.info("-- SAVING FORUMS --");
-			forumRepo.save(new Forum("Studies"));
-			forumRepo.save(new Forum("Video games"));
-			forumRepo.save(new Forum("Off topic"));
+			log.info("-- SAVING CATEGORIES --");
+			forumRepo.save(new Category("Studies"));
+			forumRepo.save(new Category("Video games"));
+			forumRepo.save(new Category("Off topic"));
 
 			log.info("-- SAVING THREADS --");
 			threadRepo.save(new Thread(1, "Server programming", "a1603200", "02:10 12/11/2017"));
 			threadRepo.save(new Thread(1, "What is HTML? HELP PLS!", "a1603200", "02:10 12/11/2017"));
-			threadRepo.save(new Thread(2, "PUBG 1", "a1603200", "02:10 12/11/2017"));
-			threadRepo.save(new Thread(2, "PUBG 2", "a1603200", "02:10 12/11/2017"));
+			threadRepo.save(new Thread(2, "PUBG", "a1603200", "02:10 12/11/2017"));
 			threadRepo.save(new Thread(3, "Kuviokellunta", "a1603200", "02:10 12/11/2017"));
 			
 			log.info(" -- SAVING COMMENTS --");
-			commentRepo.save(new Comment(1, "a1603200", "Server programming1 eka kommentti", "02:10 12/11/2017"));
-			commentRepo.save(new Comment(1, "a1603200", "Server programming1 toka kommentti.", "02:10 12/11/2017"));
-			commentRepo.save(new Comment(2, "a1603200", "Server programming2 eka kommentti.", "02:10 12/11/2017"));
-			commentRepo.save(new Comment(3, "a1603200", "PUBG1 eka kommentti..", "02:10 12/11/2017"));
-			commentRepo.save(new Comment(4, "a1603200", "PUBG2 eka kommentti...", "02:10 12/11/2017"));
-			commentRepo.save(new Comment(4, "a1603200", "PUBG2 toka kommentti...", "02:10 12/11/2017"));
-			commentRepo.save(new Comment(5, "a1603200", "Kuviokellunta eka kommentti...", "02:10 12/11/2017"));
-			commentRepo.save(new Comment(5, "a1603200", "Kuviokellunta toka kommentti...", "02:10 12/11/2017"));
-			commentRepo.save(new Comment(5, "a1603200", "Kuviokellunta kolmas kommentti...", "02:10 12/11/2017"));
+			commentRepo.save(new Comment(1, "a1603200", "Server programming bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla. BLA BLA I AM SO STRESSED!", "02:10 12/11/2017"));
+			commentRepo.save(new Comment(1, "a1601337", "I AM SO STRESSED AS WELL HOLY SHIT", "02:10 12/11/2017"));
+			commentRepo.save(new Comment(2, "a1603200", "What is HTML? Does anyone know? I want to build a site for my prize horse and I want it to have a lot of animations and glitter. Can someone help me, please?", "02:10 12/11/2017"));
+			commentRepo.save(new Comment(3, "a1603200", "Who likes pans?", "02:10 12/11/2017"));
+			commentRepo.save(new Comment(3, "a1603200", "FUCK THE PANS FOR FUCKING UP MY SHOTS! /rant", "02:10 12/11/2017"));
+			commentRepo.save(new Comment(3, "a1603200", "I guess it's kind of silly that they block bullets..? :D", "02:10 12/11/2017"));
+			commentRepo.save(new Comment(4, "a1603200", "Mistä te tykkäätte eniten kuvokellunnassa?", "02:10 12/11/2017"));
+			commentRepo.save(new Comment(4, "a1603200", "Kellumisesta. /thread", "02:10 12/11/2017"));
+			commentRepo.save(new Comment(4, "a1603200", "Vedestä ja kavereista ja ryhmäaktiviteeteista ja ja ja..!", "02:10 12/11/2017"));
 		};
 	}
 }

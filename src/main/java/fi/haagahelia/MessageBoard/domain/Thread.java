@@ -20,7 +20,7 @@ public class Thread {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
-	private long forumId;
+	private long categoryId;
 	private String title;
 	@CreatedBy
 	private String creator;
@@ -29,8 +29,8 @@ public class Thread {
 	
 	public Thread() { }
 	
-	public Thread(long forumId, String title, String creator, String created) {
-		this.forumId = forumId;
+	public Thread(long categoryId, String title, String creator, String created) {
+		this.categoryId = categoryId;
 		this.title = title;
 		this.creator = creator;
 		this.created = created;
@@ -44,12 +44,12 @@ public class Thread {
 		this.id = id;
 	}
 
-	public long getForumId() {
-		return forumId;
+	public long getCategoryId() {
+		return categoryId;
 	}
 
-	public void setForumId(long forumId) {
-		this.forumId = forumId;
+	public void setCategoryId(long categoryId) {
+		this.categoryId = categoryId;
 	}
 
 	public String getTitle() {
@@ -78,7 +78,7 @@ public class Thread {
 	
 	@Override
 	public String toString() {
-		return "Thread #" + getId() + ", Forum #" + getForumId() + ", Title: " + getTitle() + ", Created by: " + getCreator() + ", Created: " + getCreated();
+		return "Thread #" + getId() + ", Category #" + getCategoryId() + ", Title: " + getTitle() + ", Created by: " + getCreator() + ", Created: " + getCreated();
 	}
 
 }
